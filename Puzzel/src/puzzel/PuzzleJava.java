@@ -130,8 +130,7 @@ public class PuzzleJava {
 			k = (char) Math.floor(Math.random()*(max-min+1)+min);
 			mm+=k;
 		}
-		a.add(mm);
-		mm="";
+		a.add(mm);		mm="";
 	
 		}
 		
