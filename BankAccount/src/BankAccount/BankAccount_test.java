@@ -9,7 +9,7 @@ public class BankAccount_test {
 		System.out.println(cs.withdraw(cs, 50));
 		System.out.println(cs.getCheckbalance(100));
 		System.out.println(cs.getSavebalance(500));
-		System.out.println(cs.);
+		
 	}
 
 }
