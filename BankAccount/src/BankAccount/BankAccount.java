@@ -1,84 +1,98 @@
 package BankAccount;
+
 public class BankAccount {
-	String Accnumber;
-	double checkbalance;
-	double savebalance;
-	public static int numacc;
-	public static double TA;
+	
+	String AccountNumber;
+	static double CheckingBalance;
+	static double SavingBalance;
+	
+	private static int AccountsCount = 0;
+	private static double TotalAmount = 0;
+	
 	public BankAccount() {
-		print10(Accnumber);
-		numacc++;
+
+		AccountsCount++;
+		TotalAmount = 0;
+		RandomDigits(AccountNumber);
 	}
 	
-	private String print10(String Accnumber) {
-		int min=0;
-		int max=10;
-		for(int i=0;i<10;i++) {
-		Accnumber+=	Math.floor(Math.random()*(max-min+1)+min);
+	public double getCheckingBalance() {
+		return CheckingBalance;
+	}
+
+	public void setCheckingBalance(double checkingBalance) {
+		CheckingBalance = checkingBalance;
+	}
+
+	public double getSavingBalance() {
+		return SavingBalance;
+	}
+
+	public void setSavingBalance(double savingBalance) {
+		SavingBalance = savingBalance;
+	}
+
+	public static int AccountsCount() {
+	       return AccountsCount;
+	   }
+	
+	private static String RandomDigits(String AccountNumber) {
+		
+		
+		int max=0;
+		int min=10;
+		
+		for (int i=0 ; i<10 ; i++) {
+			
+			AccountNumber+=(int) Math.floor(Math.random()*(max-min+1)+min);
 		}
-		return Accnumber;
-		
-	}
-	public int numOfacc() {
-		return numacc;
+		System.out.println(AccountNumber);
+		return AccountNumber;
 	}
 	
-	
-	public double deposit(BankAccount x,int balance) {
-		
-		return x.TA+=balance;
-		
-	}
-	public double withdraw(BankAccount x,int balance) {
-		if(balance < x.TA) {
-		return x.TA-=balance;}
+	public static void deposit(double amount , String x) {
+		TotalAmount+=amount;
+		if(x=="Checking") {
+			CheckingBalance+=amount;
+		}
 		else {
-			return 0;
+			SavingBalance+=amount;}
 		}
 		
+		public static int withdraw (double amount , String x) {
+			
+			if(amount<TotalAmount) {
+			TotalAmount-=amount;
+			if(x=="Checking" && amount<CheckingBalance) {
+				CheckingBalance-=amount;
+			}
+			else if(x=="Saving" && amount<SavingBalance) {
+				SavingBalance-=amount;
+			}}
+			else {
+				System.out.println("Fuck you u dont have any money poor guy");
+			}
+		
+		
+		
+		return AccountsCount;
+		
+		
+		
 	}
-
+		public static void print() {
+			System.out.println(CheckingBalance);
+			System.out.println(SavingBalance);
+			System.out.println(TotalAmount);
+		}
 	
-	
-
-	public String getAccnumber() {
-		return Accnumber;
-	}
-
-	public void setAccnumber(String accnumber) {
-		Accnumber = accnumber;
-	}
-
-	
-
-	public double getCheckbalance(int balance ) {
-		checkbalance+=balance;
-		return checkbalance;
-	}
-
-	public double getSavebalance(int balance) {
-		savebalance+=balance;
-		return savebalance;
-	}
-
-	public void setSavebalance(double savebalance) {
-		this.savebalance = savebalance;
-	}
-
-	public static int getNumacc() {
-		return numacc;
-	}
-
-	public static void setNumacc(int numacc) {
-		BankAccount.numacc = numacc;
-	}
-
-	public static double getTA() {
-		return TA;
-	}
-
-	public static void setTA(double tA) {
-		TA = tA;
-	}
+		public static void main(String[] args) {
+			deposit(50 , "7lal");
+			deposit(70 , "Checking");
+			withdraw(30 , "Checking");
+			withdraw(30 , "Checking");
+			withdraw(90 , "Checking");
+			 print();
+		}
 
 }
