@@ -21,6 +21,8 @@ public class HelloHuman1Application {
 		else {
 			
 		searchQuery="Human";
+		
+		
 		return "Hello " + searchQuery+"!";
 		}
     }
