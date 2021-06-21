@@ -86,18 +86,7 @@ public class Book {
 	public void setNumberOfPages(Integer numberOfPages) {
 		this.numberOfPages = numberOfPages;
 	}
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+
 	@PreUpdate
     protected void onUpdate(){
         this.updatedAt = new Date();

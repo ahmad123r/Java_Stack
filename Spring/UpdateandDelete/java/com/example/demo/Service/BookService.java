@@ -32,6 +32,7 @@ public class BookService {
             return null;
         }
     }
+
 	public Book updateBook(Long id, String title, String desc, String lang, Integer numOfPages) {
 		Optional<Book> optionalBook = bookRepository.findById(id);
 		 if(optionalBook.isPresent()) {
@@ -47,7 +48,8 @@ public class BookService {
 	            return null;
 		 }
 	}public void deleteBook(Long id) {
-	bookRepository.deleteById(id);// TODO Auto-generated method stub
+	bookRepository.deleteById(id);
 		
 	}
+	
 }
